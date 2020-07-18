@@ -12,7 +12,6 @@ from scipy.stats import binom
 from scipy.stats import ks_2samp
 from scipy.stats import ttest_ind
 import os
-from firebase import firebase
 import json
 import urllib.request
 
@@ -28,7 +27,7 @@ config={
     "appId": "1:756073662506:web:2f4cb2e5e93f1d4b9d1b53"
 }
 firebase=pyrebase.initialize_app(config)
-firebase_DB = firebase.FirebaseApplication('https://healdon-916dd.firebaseio.com/', None)
+
 
 model = pickle.load(open('model.pkl','rb'))
 
