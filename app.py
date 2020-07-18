@@ -36,7 +36,7 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 
 def predict():
-    data=[]
+    
     # get data
     data = request.get_json(force=True)
     lang=data["language"]
@@ -58,7 +58,7 @@ def predict():
     speak_dur=speaking_duration(p,c)
     org_dur=original_duration(p,c)
 
-    data.append([ar_rate,rate_sph,no_pause,speak_dur,org_dur,lang])
+    data=[ar_rate,rate_sph,no_pause,speak_dur,org_dur,lang]
     df = pd.DataFrame(data,columns=['articulation_rate', 'rate_of_speech', 'number_of_pauses', 'speaking_duration', 'original_duration', 'language'])
     
     # predictions
