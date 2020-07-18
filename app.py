@@ -12,6 +12,9 @@ from scipy.stats import binom
 from scipy.stats import ks_2samp
 from scipy.stats import ttest_ind
 import os
+from firebase import firebase
+import json
+import urllib.request
 
 
 
@@ -25,7 +28,7 @@ config={
     "appId": "1:756073662506:web:2f4cb2e5e93f1d4b9d1b53"
 }
 firebase=pyrebase.initialize_app(config)
-
+firebase_DB = firebase.FirebaseApplication('https://healdon-916dd.firebaseio.com/', None)
 
 model = pickle.load(open('model.pkl','rb'))
 
@@ -39,8 +42,10 @@ def predict():
     
     # get data
     data = request.get_json(force=True)
+    u_id=data["u_id"]
     lang=data["language"]
     filename=data["filename"]
+    
     storage_path="Audio/"+str(filename)+".wav"
     try:
         storage = firebase.storage()
@@ -64,9 +69,23 @@ def predict():
     # predictions
     result = model.predict(df)
     print("model output=",result)
-    # send back to browser
-    output = {'results': int(result[0])}
     
+    
+
+    output = {'voice_result':result[0]
+              'articulation rate': ar_rate,
+             'rate of speech': rate_sph,
+             'number of pauses': no_pause,
+             'speking duration':speak_dur,
+             'original duration': org_dur}
+    json_data = json.dumps(output).encode()
+    
+    request = urllib.request.Request("https://healdon-916dd.firebaseio.com/"+u_id+"/test/voice.json", data=json_data, method="PATCH")
+    try:
+        loader = urllib.request.urlopen(request)
+    except urllib.error.URLError as e:
+        message = json.loads(e.read())
+        
     # return data
     return jsonify(results=output)
 
