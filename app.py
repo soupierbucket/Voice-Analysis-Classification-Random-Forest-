@@ -80,7 +80,7 @@ def predict():
              'original duration': org_dur}
     json_data = json.dumps(output).encode()
     
-    request = urllib.request.Request("https://healdon-916dd.firebaseio.com/"+u_id+"/test/voice.json", data=json_data, method="PATCH")
+    request = urllib.request.Request("https://healdon-916dd.firebaseio.com/u_id/"+u_id+"/test/voice.json", data=json_data, method="PATCH")
     try:
         loader = urllib.request.urlopen(request)
     except urllib.error.URLError as e:
