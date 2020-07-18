@@ -60,15 +60,15 @@ def predict():
 
     data=[ar_rate,rate_sph,no_pause,speak_dur,org_dur,lang]
     df = pd.DataFrame([data],columns=['articulation_rate', 'rate_of_speech', 'number_of_pauses', 'speaking_duration', 'original_duration', 'language'])
-    
+    print("data frame created")
     # predictions
     result = model.predict(df)
-
+    print("model output=",result)
     # send back to browser
-    #output = {'results': int(result[0])}
+    output = {'results': int(result[0])}
     
     # return data
-    return jsonify(results=result)
+    return jsonify(results=output)
 
 ######################################################
 
