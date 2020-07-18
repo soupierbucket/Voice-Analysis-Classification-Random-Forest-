@@ -72,7 +72,7 @@ def predict():
     
     
 
-    output = {'voice_result':result[0]
+    output = {'voice_result':result[0],
               'articulation rate': ar_rate,
              'rate of speech': rate_sph,
              'number of pauses': no_pause,
