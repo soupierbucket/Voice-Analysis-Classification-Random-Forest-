@@ -59,7 +59,7 @@ def predict():
     org_dur=original_duration(p,c)
 
     data=[ar_rate,rate_sph,no_pause,speak_dur,org_dur,lang]
-    df = pd.DataFrame(data,columns=['articulation_rate', 'rate_of_speech', 'number_of_pauses', 'speaking_duration', 'original_duration', 'language'])
+    df = pd.DataFrame([data],columns=['articulation_rate', 'rate_of_speech', 'number_of_pauses', 'speaking_duration', 'original_duration', 'language'])
     
     # predictions
     result = model.predict(df)
