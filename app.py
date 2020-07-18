@@ -1,6 +1,7 @@
 
 import pickle
-from flask import Flask, jsonify, request
+import flask
+from flask import Flask, jsonify
 import pyrebase
 import parselmouth
 from parselmouth.praat import call, run_file
@@ -40,7 +41,7 @@ app = Flask(__name__)
 def predict():
     
     # get data
-    data = request.get_json(force=True)
+    data = flask.request.get_json(force=True)
     u_id=data["u_id"]
     lang=data["language"]
     filename=data["filename"]
@@ -71,7 +72,7 @@ def predict():
     
     
 
-    output = {'voice_result':result[0],
+    output = {'voice_result':int(result[0]),
               'articulation rate': ar_rate,
              'rate of speech': rate_sph,
              'number of pauses': no_pause,
