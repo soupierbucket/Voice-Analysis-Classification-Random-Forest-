@@ -21,11 +21,11 @@ import urllib
 config={
     "apiKey": "******************************",
     "authDomain": "*********************************",
-    "databaseURL": "https://healdon-916dd.firebaseio.com",
-    "projectId": "healdon-916dd",
-    "storageBucket": "healdon-916dd.appspot.com",
-    "messagingSenderId": "756073662506",
-    "appId": "1:756073662506:web:2f4cb2e5e93f1d4b9d1b53"
+    "databaseURL": "*********************************",
+    "projectId": "**********************************",
+    "storageBucket": "**********************************m",
+    "messagingSenderId": "**********************************",
+    "appId": "**********************************"
 }
 firebase=pyrebase.initialize_app(config)
 
