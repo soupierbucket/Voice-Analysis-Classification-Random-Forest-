@@ -19,8 +19,8 @@ import urllib
 
 
 config={
-    "apiKey": "AIzaSyDeFLJFr2aqcAK40nZOmBtEDNYij49yyAk",
-    "authDomain": "healdon-916dd.firebaseapp.com",
+    "apiKey": "******************************",
+    "authDomain": "*********************************",
     "databaseURL": "https://healdon-916dd.firebaseio.com",
     "projectId": "healdon-916dd",
     "storageBucket": "healdon-916dd.appspot.com",
